@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block title %} UserProfile {% endblock %}
+<!-- {% load crispy_forms_tags %} -->
+
+{% block body %}
+
+{% load static %}
+<style>
+    .business-header {
+    height: 550px;
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url("{% static 'home/header.jpg' %}");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: center;
+    -o-background-size: cover;
+}
+.tagline{
+  color: #fff;
+  font-family: 'Ranchers', cursive;
+  font-size: 350%;
+}
+.subtag{
+  color: #fff;
+  font-weight: 300;
+  /* text-transform: uppercase; */
+}
+.button-all{
+  background-color: #ee5253;
+  color: #fff;
+}
+.button-all:hover{
+  background-color: #d63031;
+  color: #fff;
+}
+
+.button-ghost:link,
+.button-ghost:visited {
+    border: 1px solid #ee5253;
+    color: #ee5253 !important;
+}
+
+.button-ghost:hover,
+.button-ghost:active {
+    border: 1px solid #d63031;
+    color: #fff !important;
+}
+.button-all,
+.button-ghost{
+  border-radius: 50px;
+  width: 150px;
+}
+
+/* HEADINGS */
+
+h1,h2,h3{
+    
+   
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+h1{
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 250%;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+
+
+}
+
+h2{
+    font-size: 150%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+
+}
+
+h3{
+    font-size: 110%;
+    margin-bottom: 15px;
+
+}
+
+h2:after{
+    display: block;
+    height: 2px;
+    background-color:#ee5253;
+    content: "";
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+
+}
+.heading{
+  margin-top: 10%;
+}
+p{
+  color: #fff;
+}
+.features{
+  margin-top: 5%;
+}
+.wishlist .card{
+  box-shadow: 0 4px 8px 0 rgba(105,105,105, 0.2), 0 6px 20px 0 rgba(105,105,105, 0.19);
+  
+}
+.wishlist .card:hover {
+    transform: scale(1.03);
+}
+
+
+
+
+.row{
+    align-content: center;
+}
+
+.square_btn{
+    display: inline-block;
+    padding: 13px 20px;
+	border-radius: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: #FFF;
+    background-image: -webkit-linear-gradient(45deg, #e64732 0%, #ff6b6b 100%);
+    background-image: linear-gradient(45deg, #e64732 0%, #ff6b6b 100%);
+    transition: .4s;
+}
+
+.square_btn:hover {
+    background-image: -webkit-linear-gradient(45deg, #e64732 0%, #ff6b6b 100%);
+    background-image: linear-gradient(45deg, #e64732 0%, #ff6b6b 100%);
+}
+
+.genre{
+    padding-left: 370px;
+}
+
+
+</style>
+
+<body>
+
+<section class="genres">
+    <div class="row-heading" style="padding-top: 60px;">
+      <h2>Hello {{gen.user}}</h2><br>
+        <h2>Your preferred genres</h2> 
+    </div> 
+    <br>
+    <div class="genre">
+      <div class="container" style="margin-left: 5%;">
+        <div class="row">
+          {% if gen.drama %}
+          <a href="#" class="btn btn-danger" style="margin-right: 2%;">Drama</a>
+          {% endif %}
+  
+          {% if gen.thriller %}
+          <a href="#" class="btn btn-danger" style="margin-right: 2%;">Thriller</a>
+          {% endif %}
+  
+          {% if gen.action %}
+          <a href="#" class="btn btn-danger" style="margin-right: 2%;">Action</a>
+          {% endif %}
+  
+          {% if gen.comedy %}
+          <a href="#" class="btn btn-danger" style="margin-right: 2%;">Comedy</a>
+          {% endif %}
+  
+          {% if gen.adventure %}
+          <a href="#" class="btn btn-danger" style="margin-right: 2%;">Adventure</a>
+          {% endif %}
+          {% if gen.romance %}
+          <a href="#" class="btn btn-danger" style="margin-right: 2%;">Romance</a>
+          {% endif %}
+        </div>
+      </div>
+      
+
+    </div>
+</section>
+    
+
+<br><br><br>
+<section class="wishlist">
+    <div class="container">
+        <div class="row-heading" >
+          <h2>My Wishlist</h2>  <br>
+        </div>
+      
+       
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+ 
+          {% if film_data %}
+            {% for film_recom in film_data %}
+            <div class="row" >
+            
+              <!-- <h4 style="color: #fff;"></h4> -->
+              <div class="col">
+                <div class="card" style="width: 18rem; height:32rem;background-color: black; margin-top: 5%; margin-bottom: 40px;box-shadow: 0 4px 8px 0 rgba(105,105,105, 0.2), 0 6px 20px 0 rgba(105,105,105, 0.19);">
+                  <img src=" https://image.tmdb.org/t/p/w185/{{ film_recom.poster_path }}" alt="" class="card-img-top" height="300px">
+                  <div class="card-body">
+                    <h6 style="color: #fff;">{{ film_recom.title }}</h6>
+                    <p class="card-text" style="margin-bottom: 3%;"><em>{{ film_recom.tagline }}</em></p><br>
+                    <p style="color: #fff;" class="card-text"><img src="{%static 'recommend/favourite.png' %}" alt="" height="15px" width="15px">: <span style="color: #ee5253;">{{ film_recom.vote_average }}</span></p>
+                    <p class="card-text" style="color: #fff;"><strong>Genre: </strong><span style="color: #ee5253; text-decoration: underline;">{{ film_recom.genre }}</span></p>
+                    
+                   
+                  </div>
+                </div>
+              </div>
+              </div>
+              {% endfor %}
+              {% else %}
+              </div>
+              <h4 style="color: #fff;">{{ error }}</h4>
+              {% endif %}
+            </div>
+
+
+      </div>
+    </section>
+</body>
+
+{% endblock body%}

@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block title %}Create an Account{% endblock %}
+<!-- {% load crispy_forms_tags %} -->
+
+{% block body %}
+
+{% load static %}
+<head>
+  <style>
+  body{
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url("{% static 'register/login_bg.png' %}");
+    }
+   label{
+     color: white;
+   }
+  input[type=submit],
+  .button-all{
+  background-color: #ee5253 !important;
+  color: #fff;
+  border-radius: 50px;
+  width: 100px;
+}
+input[type=submit]:hover,
+input[type=submit]:active,
+.button-all:hover{
+  background-color: #d63031  !important;
+  color: #fff;
+}
+.link-sign:link,
+.link-sign:visited{
+  color: #ee5253;
+}
+.link-sign:active,
+.link-sign:hover{
+  color: #d63031;
+  text-decoration: underline;
+}
+/* HEADINGS */
+
+h1,h2,h3{
+    
+   
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+h1{
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 250%;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+
+
+}
+
+h2{
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+
+}
+
+h3{
+    font-size: 110%;
+    margin-bottom: 15px;
+
+}
+
+h2:after{
+    display: block;
+    height: 2px;
+    background-color:#ee5253;
+    content: "";
+    width: 80px;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 2%;
+
+
+}
+.heading{
+  margin-left: 45%;
+}
+.form-control{
+  background-color: #9E9E9E;
+   border: transparent; 
+   border-radius: 18px;
+}
+.myForm .form-check-input{
+  background-color: #9E9E9E;
+
+}
+.link-sign:link,
+.link-sign:visited{
+  color: #ee5253;
+}
+.link-sign:active,
+.link-sign:hover{
+  color: #d63031;
+  text-decoration: underline;
+}
+  </style>
+</head>
+
+<body>
+    <br><br>
+    <div class="container">
+      <h2>We're almost done, select your favourite genres to get a more customized experience!
+      </h2>  
+{% if error %}
+<div class="alert alert-danger" role="alert">
+    {{ error }}
+</div>
+{% endif %}
+<div class="d-flex justify-content-center h-100 ">
+    <div class="card card-block d-table-cell align-middle" style="background-color: #1a1a1a; opacity: 0.9; border-radius: 25px; padding: 15px;">
+      <div class="card-body" style="width: 350px;">
+
+    <form method="POST" class="form-group myForm">
+	    {% csrf_token %}
+      
+     
+        <div class="form-group">
+          <label for="email">Email ID</label>
+          <input type="email" name="email" class="form-control" id="email">
+      </div>
+      <label for="">Your favourite Genres</label>
+      <div class="form-check">
+        <label class="form-check-label" for="check1">
+          <input type="checkbox" class="form-check-input" id="check1" name="drama">Drama
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label" for="check2">
+          <input type="checkbox" class="form-check-input" id="check2" name="thriller">Thriller
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" id="check3" name="action">Action
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" id="check4" name="comedy">Comedy
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" id="check5" name="romance">Romance
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" id="check6" name="adventure">Adventure
+        </label>
+      </div>
+        <button type="submit" class="btn button-all" style="margin-left: 32%;margin-top: 7%;">Submit</button>
+    </form>
+    <hr>
+    <div class="text-center" style="color: white; font-size: small;">
+        Do you already have an account? <a href="{% url 'loginuser' %}" class="link-sign">Login here</a>
+    </div>
+    </form>
+
+</div>
+</div>
+  </div>
+</div>
+</div>
+</div>
+</body>
+
+{% endblock body%}
