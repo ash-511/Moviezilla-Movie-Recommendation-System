@@ -1,4 +1,4 @@
-# FreshMart - Online Grocery Mart
+# Moviezilla: Movie Recommendation Platform
 ## *Problem Statement:* 
 From Amazon Prime to Netflix, the need for a robust recommendation system is extremely necessary given the amount of personalised content consumed by the users of these platforms. Moviezilla is a movie recommendation system that aims to provide users personalised movie recommendations based on a range of various attributes, be it genres, cast or overview, making it a user-friendly and hassle-free experience for consumers.
 
